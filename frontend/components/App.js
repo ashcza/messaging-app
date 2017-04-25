@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { MessageList } from './MessageList';
+import MessageInput from './MessageInput';
 // import './App.css';
 
 export default class App extends Component {
@@ -13,12 +15,13 @@ export default class App extends Component {
     this.fetchMessages();
   }
 
+
   submitMessage(data) {
     $.ajax({
           url: "/messages",
           dataType: "json",
           type: "POST",
-          data: {message: data},
+          data: {message: {content: data, sender: "ashcon"}},
           success: function(data) {
             this.setState({messages: data});
           }.bind(this),
@@ -44,8 +47,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        ashcon at app
+      <div>
+        <MessageList messages={this.state.messages} />
+        <MessageInput submitMessage={this.submitMessage}/>
       </div>
     );
   }

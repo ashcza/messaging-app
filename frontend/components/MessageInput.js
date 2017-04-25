@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class SendMessage extends Component {
+export default class MessageInput extends Component {
   constructor(props) {
     super(props);
-    state = {
+    this.state = {
       message: ""
-    }
+    };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  update(e) => {
+  update(e) {
     this.setState({message: e.target.value});
   }
 
-  handleSubmit(e) => {
+  handleSubmit(e) {
     e.preventDefault();
-    let trimMessage = message.trim();
-    if (trimMessage) {
-      this.props.sendMessage(this.state.message);
+    let message = this.state.message.trim();
+    if (message) {
+      this.props.submitMessage(this.state.message);
       this.setState({message: ""})
     }
   }
