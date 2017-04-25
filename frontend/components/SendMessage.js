@@ -16,7 +16,11 @@ export default class SendMessage extends Component {
 
   handleSubmit(e) => {
     e.preventDefault();
-    this.props.sendMessage(this.state.message);
+    let trimMessage = message.trim();
+    if (trimMessage) {
+      this.props.sendMessage(this.state.message);
+      this.setState({message: ""})
+    }
   }
 
   render() {
