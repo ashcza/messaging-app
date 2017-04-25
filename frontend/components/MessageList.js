@@ -2,17 +2,16 @@ import React from 'react';
 
 export const MessageList = (props) => {
   let renderMessages = (messages) => {
-    return messages.map( message => (
-      <div key={message.id}>{message.sender}: {message.content}</div>
+    return messages.map( (message, idx) => (
+      <li key={idx}>{message.sender}: {message.content}</li>
     ))
   }
-
   if (!props.messages) {
     return <div></div>
   }
   return (
-    <div>
+    <ul>
       {renderMessages(props.messages)}
-    </div>
+    </ul>
   )
 }

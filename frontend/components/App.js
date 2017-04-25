@@ -25,9 +25,6 @@ export default class App extends Component {
           dataType: "json",
           type: "POST",
           data: {message: {content: text, sender: author}},
-          success: function(data) {
-            this.setState({messages: data});
-          }.bind(this),
           error: function(xhr, status, err) {
             console.error("Cannot load data.");
           }.bind(this)
@@ -54,7 +51,6 @@ export default class App extends Component {
       connected: function() {},
       disconnected: function() {},
       received: function(data) {
-        console.log("working")
         this.appendNewMessage(data);
       },
       appendNewMessage: this.appendNewMessage

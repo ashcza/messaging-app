@@ -18,7 +18,7 @@ export default class MessageInput extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let message = this.state.message.trim();
-    if (message) {
+    if (message && this.state.sender) {
       this.props.submitMessage(this.state.message, this.state.sender);
       this.setState({message: ""})
     }
