@@ -18,26 +18,28 @@ export default class MessageInput extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let message = this.state.message.trim();
-    if (message && this.state.sender) {
-      this.props.submitMessage(this.state.message, this.state.sender);
+    let sender = this.state.sender.trim();
+    if (message && sender) {
+      this.props.submitMessage(message, sender);
       this.setState({message: ""})
     }
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Message
-          <input name="message" type="text" value={this.state.message} onChange={this.update} />
-        </label>
-        <br/>
-        <label>
-          Your Name
-          <input name="sender" type="text" value={this.state.sender} onChange={this.update} />
-        </label>
-        <br/>
-        <input type="submit" value="Enter Message" />
+      <form className="input" onSubmit={this.handleSubmit}>
+        <div className="fields">
+          <label>
+            Your Name
+            <input className="input-name" name="sender" type="text" value={this.state.sender} onChange={this.update} />
+          </label>
+          <br/>
+          <label className="input-right">
+            Message
+            <textarea className="input-message" name="message" type="text" value={this.state.message} onChange={this.update} />
+          </label>
+        </div>
+        <input className="enter" type="submit" value="Enter Message" />
       </form>
     )
   }

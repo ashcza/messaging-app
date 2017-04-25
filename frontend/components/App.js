@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { MessageList } from './MessageList';
 import MessageInput from './MessageInput';
-// import './App.css';
 
 export default class App extends Component {
   constructor() {
@@ -70,8 +69,8 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <MessageList messages={this.state.messages} />
+      <div className="container">
+        <MessageList messages={this.state.messages} className="messages"/>
         <MessageInput submitMessage={this.submitMessage}/>
       </div>
     );

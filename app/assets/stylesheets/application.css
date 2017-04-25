@@ -1,15 +1,77 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+
+
+.input {
+  height: 110px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  background-color: rgba(88, 195, 214, 0.64);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-top: rgb(88, 195, 214) 6px solid;
+  border-radius: 26px 25px 0px 0px;
+}
+
+.line {
+  display: flex;
+}
+
+.messages {
+  position: relative;
+  min-height: 150px;
+}
+.message-ul {
+  position: absolute;
+  bottom: 145px;
+  left: 0;
+}
+
+.fields {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-message {
+  width: 35vw;
+  height: 35px;
+}
+
+.input-name {
+  width: 20vw;
+}
+
+label {
+  vertical-align: middle;
+}
+
+.input-right {
+  display: flex;
+  align-items: center;
+}
+
+.enter {
+  width: 90%;
+  margin-left: 5%;
+}
+
+input {
+  padding-left: 10px;
+}
+
+.name {
+  padding-right: 15px;
+}
