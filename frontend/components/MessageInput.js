@@ -12,7 +12,6 @@ export default class MessageInput extends Component {
   }
 
   update(e) {
-    console.log(e.target.name)
     this.setState({[e.target.name]: e.target.value});
   }
 
@@ -32,12 +31,12 @@ export default class MessageInput extends Component {
           Message
           <input name="message" type="text" value={this.state.message} onChange={this.update} />
         </label>
-
+        <br/>
         <label>
           Your Name
           <input name="sender" type="text" value={this.state.sender} onChange={this.update} />
         </label>
-
+        <br/>
         <input type="submit" value="Enter Message" />
       </form>
     )

@@ -9,10 +9,13 @@ export default class App extends Component {
     this.state = { messages: [] };
     this.fetchMessages = this.fetchMessages.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
+    this.setSubscription = this.setSubscription.bind(this);
+    this.appendNewMessage = this.appendNewMessage.bind(this);
   }
 
   componentDidMount() {
     this.fetchMessages();
+    this.setSubscription();
   }
 
 
@@ -42,6 +45,30 @@ export default class App extends Component {
       error: function(xhr, status, err) {
         console.error("Cannot load data.");
       }.bind(this)
+    });
+  }
+
+  setSubscription() {
+    App.cable = ActionCable.createConsumer()
+    App.message = App.cable.subscriptions.create("MessageChannel", {
+      connected: function() {},
+      disconnected: function() {},
+      received: function(data) {
+        console.log("working")
+        this.appendNewMessage(data);
+      },
+      appendNewMessage: this.appendNewMessage
+    });
+  }
+
+  appendNewMessage(data) {
+    var new_messages = this.state.messages.concat([{id: data.id, content: data.content}]);
+    this.setState({messages: this.state.messages.concat(
+      [{id: data.id,
+        content: data.content,
+        sender: data.sender,
+        time: data.time
+      }])
     });
   }
 
