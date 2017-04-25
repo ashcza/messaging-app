@@ -16,12 +16,12 @@ export default class App extends Component {
   }
 
 
-  submitMessage(data) {
+  submitMessage(text, author) {
     $.ajax({
           url: "/messages",
           dataType: "json",
           type: "POST",
-          data: {message: {content: data, sender: "ashcon"}},
+          data: {message: {content: text, sender: author}},
           success: function(data) {
             this.setState({messages: data});
           }.bind(this),
